@@ -34,7 +34,7 @@ class ShoppingBasket
 			unset($items[$key]);
 		}
 
-		$this->refresh($items);
+		$this->update($items);
 	}
 
 	/**
@@ -67,7 +67,7 @@ class ShoppingBasket
 	 * 
 	 * @return void
 	 */
-	private function refresh(array $items)
+	private function update(array $items)
 	{
 		$_SESSION[self::CART] = $items;
 	}
