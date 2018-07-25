@@ -122,18 +122,6 @@ class Route extends Controller
     }
 
     /**
-     * Count data
-     *
-     * @param  string $data Data to be counted
-     *
-     * @return int
-     */
-    private function count(string $data)
-    {
-        return count(explode('/', $data));
-    }
-
-    /**
      * Cn match
      *
      * @return boolean
@@ -151,9 +139,11 @@ class Route extends Controller
     public function routes()
     {
         if ($this->controller()) {
-            $this->setController($this->getController());
-            $this->setAction($this->getAction());
-            $this->setParams($this->getParams());
+            $this
+                ->setController($this->getController())
+                ->setAction($this->getAction())
+                ->setParams($this->getParams())
+            ;
             
             $this->run();
         }

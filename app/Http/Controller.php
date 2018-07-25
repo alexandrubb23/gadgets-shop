@@ -32,14 +32,14 @@ class Controller implements ControllerInterface
 	protected $action;
 
 	/**
-	 * Params 
-	 * 
 	 * @var array
 	 */
 	protected $params = [];
 
 	/**
 	 * @inheritdoc
+	 *
+	 * @throws InvalidArgumentException
 	 */
 	public function setController(string $controller)
 	{
