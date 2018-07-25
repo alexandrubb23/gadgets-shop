@@ -5,34 +5,31 @@ namespace LinkAcademy\Gadgets\Commons\Http;
 use ReflectionClass;
 use InvalidArgumentException;
 use LinkAcademy\Gadgets\Commons\Twig;
+use LinkAcademy\Gadgets\Commons\Http\Route;
 use LinkAcademy\Gadgets\Commons\Http\AbstractController;
 use LinkAcademy\Gadgets\Commons\Contracts\ControllerInterface;
 
 class Controller implements ControllerInterface
 {
 	/**
-	 * Default controller
-	 */
-	const DEFAULT_CONTROLLER = 'Home';
-
-	/**
-	 * Default action
-	 */
-	const DEFAULT_ACTION = 'index';
-
-	/**
-	 * Controller
-	 * 
 	 * @var string
 	 */
-	protected $controller = self::DEFAULT_CONTROLLER;
+	protected $controller;
 
 	/**
-	 * Action
-	 * 
 	 * @var string
 	 */
-	protected $action = self::DEFAULT_ACTION;
+	protected $method;
+
+	/**
+	 * @var string
+	 */
+	protected $uri;
+
+	/**
+	 * @var string
+	 */
+	protected $action;
 
 	/**
 	 * Params 
@@ -42,80 +39,13 @@ class Controller implements ControllerInterface
 	protected $params = [];
 
 	/**
-	 * App directory
-	 * 
-	 * @var string
-	 */
-	protected $basePath = APP_DIR;
-
-	/**
-	 * Class constructor
-	 * 
-	 * @param array $options Controller options
-	 */
-	public function __construct(array $options = [])
-	{
-		if (empty($options)) {
-			$this->parseUri();
-		} else {
-			if (isset($options['controller'])) {
-				$this->setController($options['controller']);
-			}
-
-			if (isset($options['action'])) {
-				$this->setAction($options['action']);
-			}
-
-			if (isset($options['params'])) {
-				$this->setParams($options['params']);
-			}
-		}
-	}
-
-	/**
-	 * Parse uri
-	 * 
-	 * @return void
-	 */
-	protected function parseUri()
-	{
-		$path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-		$path = preg_replace("/[^a-zA-Z0-9\/]/", '', $path);
-
-		if (strpos($path, $this->basePath) === 0) {
-			$path = substr($path, strlen($this->basePath));
-		}
-
-		@list($controller, $action, $params) = explode('/', $path, 3);
-
-		if (isset($controller)) {
-			$this->setController($controller);
-		}
-
-		if (isset($action)) {
-			$this->setAction($action);
-		}
-
-		if (isset($params)) {
-			$this->setParams($params);
-		}
-	}
-
-	/**
 	 * @inheritdoc
 	 */
 	public function setController(string $controller)
 	{
-		$controller = ! $controller
-			? $this->controller
-			: $controller
-		;
-
-		$controller = ucfirst(strtolower($controller)) . 'Controller';
-
-		$class = self::getFullClassName($controller);
-		if (class_exists($class)) {
-			$this->controller = $class;
+		// var_dump('Set controller ' . $controller);
+		if (class_exists($controller)) {
+			$this->controller = $controller;
 			return $this;
 		}
 
@@ -132,9 +62,10 @@ class Controller implements ControllerInterface
 	 */
 	public function setAction(string $action)
 	{
+		// var_dump('Set action ' . $action);
 		$reflection = new ReflectionClass($this->controller);
 		if ($reflection->hasMethod($action)) {
-			$this->action = $action;
+			$this->method = $action;
 			return $this;
 		}
 
@@ -151,6 +82,10 @@ class Controller implements ControllerInterface
 	 */
 	public function setParams($params)
 	{
+		if (! $params) {
+			return;	
+		}
+
 		if (! is_array($params)) {
 			$params = explode(',', $params);
 		}
@@ -172,18 +107,7 @@ class Controller implements ControllerInterface
 				AbstractController::class
 			));
 		}
-
-		call_user_func_array([$controller, $this->action], $this->params);
-	}
-
-	/**
-	 * Get full class name including namespace
-	 * 
-	 * @param  string $controller Short class name
-	 * @return string
-	 */
-	private static function getFullClassName($controller)
-	{
-		return __NAMESPACE__ . '\\' . $controller;
+		
+		call_user_func_array([$controller, $this->method], $this->params);
 	}
 }

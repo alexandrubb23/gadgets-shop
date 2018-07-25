@@ -24,7 +24,7 @@ interface ControllerInterface
 	 * 
 	 * @param string|array $params Action params
 	 */
-	public function setParams(array $params);
+	public function setParams($params);
 
 	/**
 	 * Run a controller
