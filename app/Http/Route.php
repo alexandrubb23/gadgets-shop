@@ -77,19 +77,33 @@ class Route extends Controller
      */
     protected function matchRoute()
     {
-        if (! $this->canMatch()) {
+        # there is no route, go home
+        if (! $this->isRealRoute()) {
+            return $this->getUri();
+        }
+
+        return $this->getRealRoute();
+    }
+
+    /**
+     * Get formated route
+     *
+     * @return string|null
+     */
+    public function getRealRoute()
+    {
+        if (! $this->getRequest()) {
             return;
         }
 
         $getParam = preg_replace('/.*\\/(.*)$/', "$1", $this->getUri());
 
         preg_match("/^{.*?}$/", $getParam, $matches);
-        if ($matches) {
-            $param = array_pop(explode('/', $this->getRequest()));
+        if (! empty($matches)) {
+            $uri = explode('/', $this->getRequest());
+            $param = array_pop($uri);
             return str_replace($matches[0], $param, $this->getUri());
         }
-
-        return $this->getUri();
     }
 
     /**
@@ -124,9 +138,9 @@ class Route extends Controller
      *
      * @return boolean
      */
-    private function canMatch()
+    private function isRealRoute()
     {
-        return $this->count($this->getUri()) === $this->count($this->getRequest());
+        return $this->getRealRoute() === $this->getRequest();
     }
 
     /**

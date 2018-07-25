@@ -43,7 +43,6 @@ class Controller implements ControllerInterface
 	 */
 	public function setController(string $controller)
 	{
-		// var_dump('Set controller ' . $controller);
 		if (class_exists($controller)) {
 			$this->controller = $controller;
 			return $this;
@@ -62,7 +61,6 @@ class Controller implements ControllerInterface
 	 */
 	public function setAction(string $action)
 	{
-		// var_dump('Set action ' . $action);
 		$reflection = new ReflectionClass($this->controller);
 		if ($reflection->hasMethod($action)) {
 			$this->method = $action;
@@ -107,7 +105,7 @@ class Controller implements ControllerInterface
 				AbstractController::class
 			));
 		}
-		
+
 		call_user_func_array([$controller, $this->method], $this->params);
 	}
 }
