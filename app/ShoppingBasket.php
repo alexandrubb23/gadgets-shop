@@ -29,7 +29,7 @@ class ShoppingBasket
 	 */
 	public function remove(int $item)
 	{
-		$items = $this->getAll();
+		$items = $this->getAll();		
 		if (false !== $key = array_search($item, $items)) {
 			unset($items[$key]);
 		}

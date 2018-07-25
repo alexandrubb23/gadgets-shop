@@ -47,9 +47,9 @@ class Route extends Controller
      *
      * @return string
      */
-    public function getParams()
+    public function getParams(string $request = null)
     {
-        return preg_replace("/.*\\/(.*)$/", "$1", $this->getRequest());
+        return preg_replace("/.*\\/(.*)$/", "$1", $request ?? $this->getRequest());
     }
 
     /**
@@ -99,9 +99,7 @@ class Route extends Controller
             return;
         }
 
-        $getParam = preg_replace('/.*\\/(.*)$/', "$1", $this->getUri());
-
-        preg_match("/^{.*?}$/", $getParam, $matches);
+        preg_match("/^{.*?}$/", $this->getParams($this->getUri()), $matches);
         if (! empty($matches)) {
             $uri = explode('/', $this->getRequest());
             $param = array_pop($uri);
@@ -110,11 +108,11 @@ class Route extends Controller
     }
 
     /**
-     * Run controller
+     * Check if is controller
      *
      * @return boolean
      */
-    public function controller()
+    public function isController()
     {
         $request = $this->getRequest();
         if (! $request) {
@@ -141,14 +139,16 @@ class Route extends Controller
      */
     public function routes()
     {
-        if ($this->controller()) {
-            $this
-                ->setController($this->getController())
-                ->setAction($this->getAction())
-                ->setParams($this->getParams())
-            ;
-            
-            $this->run();
+        if (! $this->isController()) {
+            return;
         }
+        
+        $this
+            ->setController($this->getController())
+            ->setAction($this->getAction())
+            ->setParams($this->getParams())
+        ;
+        
+        $this->run();
     }
 }
