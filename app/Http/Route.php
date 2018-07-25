@@ -4,7 +4,10 @@ namespace LinkAcademy\Gadgets\Commons\Http;
 
 class Route extends Controller
 {
-    const DEFAULT_CONTROLLER = 'home';
+    /**
+     * Default controller
+     */
+    const DEFAULT_ROUTE = 'home';
 
     /**
      * Class constructor
@@ -115,7 +118,7 @@ class Route extends Controller
     {
         $request = $this->getRequest();
         if (! $request) {
-            $request = self::DEFAULT_CONTROLLER;
+            $request = self::DEFAULT_ROUTE;
         }
 
         return $request === $this->matchRoute();

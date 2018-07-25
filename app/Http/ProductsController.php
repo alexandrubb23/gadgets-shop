@@ -2,6 +2,8 @@
 
 namespace LinkAcademy\Gadgets\Commons\Http;
 
+use LinkAcademy\Gadgets\Commons\Support\Facades\Cart;
+
 class ProductsController extends AbstractController 
 {
 	/**
@@ -24,8 +26,11 @@ class ProductsController extends AbstractController
 		echo $this->twig->render('store.html');
 	}
 
-	public function getProduct(int $id = null)
+	public function getProduct(int $id)
 	{
+		// Cart::add(5);
+		// Cart::remove(3);
+		var_dump(Cart::getItems());
 		echo $this->twig->render('product.html', ['product_id' => $id]);
 	}	
 }
