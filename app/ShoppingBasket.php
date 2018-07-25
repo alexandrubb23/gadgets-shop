@@ -13,7 +13,7 @@ class ShoppingBasket
 	 */
 	public function add(int $item): bool
 	{
-		if (! in_array($item, $this->getItems())) {
+		if (! in_array($item, $this->getAll())) {
 			$_SESSION[self::CART][] = $item;
 		}
 
@@ -29,7 +29,7 @@ class ShoppingBasket
 	 */
 	public function remove(int $item)
 	{
-		$items = $this->getItems();
+		$items = $this->getAll();
 		if (false !== $key = array_search($item, $items)) {
 			unset($items[$key]);
 		}
@@ -42,11 +42,31 @@ class ShoppingBasket
 	 * 
 	 * @return array
 	 */
-	public function getItems(): array
+	public function getAll(): array
 	{
-		return $_SESSION[self::CART] ?? [];
+		$items = $_SESSION[self::CART] ?? [];
+		sort($items, SORT_REGULAR);
+
+		return $items;
 	}
 
+	/**
+	 * Get all items separated by comma (e.g MySQL IN())
+	 * 
+	 * @return string
+	 */
+	public function getItems()
+	{
+		return implode(",", $this->getAll());
+	}
+
+	/**
+	 * Refresh basket
+	 * 
+	 * @param  array  $items Items
+	 * 
+	 * @return void
+	 */
 	private function refresh(array $items)
 	{
 		$_SESSION[self::CART] = $items;

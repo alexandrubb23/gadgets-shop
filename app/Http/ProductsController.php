@@ -28,9 +28,9 @@ class ProductsController extends AbstractController
 
 	public function getProduct(int $id)
 	{
-		// Cart::add(5);
+		// Cart::add(3);
 		// Cart::remove(3);
-		var_dump(Cart::getItems());
+		// var_dump(Cart::getItems());
 		echo $this->twig->render('product.html', ['product_id' => $id]);
 	}	
 }
