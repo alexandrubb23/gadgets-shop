@@ -2,6 +2,7 @@
 # LinkAcademy - Gadgets Shopp
 
 One Paragraph of project description goes here
+This project is a piece of work which demonstrats ...
 
 ## Getting Started
 
@@ -9,10 +10,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Open your terminal and run to install app dependencies, as follow:
 
 ```
-Give examples
+composer install
 ```
 
 ### Installing
@@ -22,7 +23,7 @@ A step by step series of examples that tell you how to get a development env run
 Say what the step will be
 
 ```
-Give the example
+Open a new Docker container or use a virtual machine (e.g Vagrant)
 ```
 
 And repeat

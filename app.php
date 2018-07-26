@@ -6,7 +6,7 @@ session_start();
 
 require 'vendor/autoload.php';
 require 'utils/helpers.php';
-include 'AutoloadRegister.php';
+include 'app/AutoloadRegister.php';
 
 /*
 |--------------------------------------------------------------------------
