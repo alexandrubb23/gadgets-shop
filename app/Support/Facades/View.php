@@ -2,9 +2,9 @@
 
 namespace LinkAcademy\Gadgets\Commons\Support\Facades;
 
-use LinkAcademy\Gadgets\Commons\Cart as Basket;
+use LinkAcademy\Gadgets\Commons\Twig;
 
-class Cart extends Facade
+class View extends Facade
 {
     /**
      * Get the registered name of the component.
@@ -13,6 +13,6 @@ class Cart extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return Basket::class;
+        return Twig::class;
     }
 }

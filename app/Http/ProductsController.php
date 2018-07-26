@@ -4,33 +4,29 @@ namespace LinkAcademy\Gadgets\Commons\Http;
 
 use LinkAcademy\Gadgets\Commons\Support\Facades\Cart;
 
-class ProductsController extends AbstractController 
+class ProductsController extends AbstractController
 {
-	/**
-	 * Class constructor
-	 * 
-	 * @param \Twig_Environment $twig Twig template engine
-	 */
-	public function __construct(\Twig_Environment $twig)
-	{
-		$this->twig = $twig;
-	}
+    /**
+     * Products
+     *
+     * @return void
+     */
+    public function index()
+    {
+        return view('store.html');
+    }
 
-	/**
-	 * Products
-	 * 
-	 * @return void
-	 */
-	public function index()
-	{
-		echo $this->twig->render('store.html');
-	}
-
-	public function getProduct(int $id)
-	{
-		// Cart::add(3);
-		Cart::remove(3);
-		// var_dump(Cart::getItems());
-		echo $this->twig->render('product.html', ['product_id' => $id]);
-	}	
+    /**
+     * Prodcut detail
+     *
+     * @param  int    $id Product id
+     * @return void
+     */
+    public function getProduct(int $id)
+    {
+        // Cart::add(3);
+        // Cart::remove(3);
+        // var_dump(Cart::getAll());
+        return view('product.html', ['product_id' => $id]);
+    }
 }
