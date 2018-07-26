@@ -4,7 +4,7 @@ namespace LinkAcademy\Gadgets\Commons\Http;
 
 use LinkAcademy\Gadgets\Commons\Support\Facades\Cart;
 
-class ProductsController extends AbstractController
+class ProductsController
 {
     /**
      * Products

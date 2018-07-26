@@ -96,15 +96,6 @@ class Controller implements ControllerInterface
      */
     public function run()
     {
-        $controller = new $this->controller;
-        if (! $controller instanceof AbstractController) {
-            throw new \Exception(sprintf(
-                'The class "%s" must implements "%s"',
-                get_class($controller),
-                AbstractController::class
-            ));
-        }
-
-        call_user_func_array([$controller, $this->method], $this->params);
+        call_user_func_array([new $this->controller, $this->method], $this->params);
     }
 }

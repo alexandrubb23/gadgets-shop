@@ -2,7 +2,9 @@
 
 namespace LinkAcademy\Gadgets\Commons\Http;
 
-class HomeController
+use LinkAcademy\Gadgets\Commons\Support\Facades\Cart;
+
+class CartController
 {
     /**
      * get home page
@@ -11,6 +13,7 @@ class HomeController
      */
     public function index()
     {
-        return view('index.html');
+    	var_dump(Cart::getAll());
+        return view('checkout.html');
     }
 }

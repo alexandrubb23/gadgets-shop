@@ -8,3 +8,4 @@ require 'app.php';
 Route::get('home', 'LinkAcademy\Gadgets\Commons\Http\HomeController@index');
 Route::get('products', 'LinkAcademy\Gadgets\Commons\Http\ProductsController@index');
 Route::get('product/{id}', 'LinkAcademy\Gadgets\Commons\Http\ProductsController@getProduct');
+Route::get('cart', 'LinkAcademy\Gadgets\Commons\Http\CartController@index');
