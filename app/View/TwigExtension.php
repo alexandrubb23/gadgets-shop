@@ -1,6 +1,6 @@
 <?php
 
-namespace LinkAcademy\Gadgets\Commons;
+namespace LinkAcademy\Gadgets\Commons\View;
 
 class TwigExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
 {

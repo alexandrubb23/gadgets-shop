@@ -2,7 +2,7 @@
 
 namespace LinkAcademy\Gadgets\Commons\Support\Facades;
 
-use LinkAcademy\Gadgets\Commons\Twig;
+use LinkAcademy\Gadgets\Commons\View\Twig;
 
 class View extends Facade
 {

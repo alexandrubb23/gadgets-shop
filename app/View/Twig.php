@@ -1,10 +1,10 @@
 <?php
 
-namespace LinkAcademy\Gadgets\Commons;
+namespace LinkAcademy\Gadgets\Commons\View;
 
 use Twig_Environment;
 use Twig_Loader_Filesystem;
-use LinkAcademy\Gadgets\Commons\TwigExtension;
+use LinkAcademy\Gadgets\Commons\View\TwigExtension;
 
 class Twig
 {
