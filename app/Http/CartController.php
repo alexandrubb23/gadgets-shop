@@ -13,7 +13,7 @@ class CartController
      */
     public function index()
     {
-    	var_dump(Cart::getAll());
+        var_dump(Cart::getAll());
         return view('checkout.html');
     }
 }
