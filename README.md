@@ -41,9 +41,9 @@ composer install
 
 * [Twig Symfony](https://twig.symfony.com/) - will be installed.
 
-### Running application
+## Running application
 
-## Doker
+### Doker
 
 In order to run application inside a container run the following command:
 
@@ -58,7 +58,7 @@ docker run -p 3000:3000 gadgets
 * **Access application in your browser** - http://localhost:3000
 
 
-## Vagrant
+### Vagrant
 
 You can use Homestead from Laravel Framework
 
