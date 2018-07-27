@@ -144,11 +144,21 @@ class Route extends Controller
         }
         
         $this
-            ->setController($this->getController())
+            ->setController($this->getFullClassController())
             ->setAction($this->getAction())
             ->setParams($this->getParams())
         ;
         
         $this->run();
+    }
+
+    /**
+     * Get full class controller - including namespace.
+     *
+     * @return string
+     */
+    private function getFullClassController()
+    {
+        return __NAMESPACE__ . '\\' . $this->getController();
     }
 }
