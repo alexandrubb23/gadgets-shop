@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace LinkAcademy\Gadgets\Commons\Http;
+namespace LinkAcademy\Gadgets\Commons\Http\Controllers;
 
 use LinkAcademy\Gadgets\Commons\Support\Facades\Cart;
 

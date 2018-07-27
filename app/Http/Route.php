@@ -159,6 +159,6 @@ class Route extends Controller
      */
     private function getFullClassController()
     {
-        return __NAMESPACE__ . '\\' . $this->getController();
+        return __NAMESPACE__ . '\\Controllers\\' . $this->getController();
     }
 }
