@@ -1,90 +1,73 @@
 
-# LinkAcademy - Gadgets Shopp
+# Gadgets Shopp
 
-One Paragraph of project description goes here
-This project is a piece of work which demonstrats ...
+A small osCommerce gadgets application according to the request. This app is fully OOP and is compliant PSR2.
+
+## Used Design Pattern
+
+* AutoloadRegister
+* Controller
+* Route
+* Facade
+
+## Software needed in order to run the app
+
+* [PHP](http://php.net/docs.php) - 7.0.x
+* [MySQL](https://www.mysql.com/)
+* [PHP Composer](https://getcomposer.org/)
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+In order to fetch the project on your local machine run the following command:
+
+```
+git init <project directory>
+```
+
+Cloning repository
+
+```
+git clone https://github.com/alexandrubb23/gadgets-shopp.git
+```
 
 ### Prerequisites
 
-Open your terminal and run to install app dependencies, as follow:
+Open your "cli" and run to install application dependencies, as follow:
 
 ```
 composer install
 ```
 
-### Installing
+### Running application
 
-A step by step series of examples that tell you how to get a development env running
+## Doker
 
-Say what the step will be
-
-```
-Open a new Docker container or use a virtual machine (e.g Vagrant)
-```
-
-And repeat
+In order to run application inside a container run the following command:
 
 ```
-until finished
+docker buid -t gadgets
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
 ```
-Give an example
+docker run -p 3000:3000 gadgets
 ```
 
-### And coding style tests
+* **Access application in your browser** - http://localhost:3000
 
-Explain what these tests test and why
 
-```
-Give an example
-```
+## Vagrant
 
-## Deployment
+You can use Homestead from Laravel Framework
 
-Add additional notes about how to deploy this on a live system
+* [Laravel](https://laravel.com/docs/5.6/homestead) - Homestead
 
-## Built With
+**Please note that** - You should edit Homestead.yaml with your settings (e.g vhost; php version; etc.)
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+* **Access application in your browser** - http://yourdomain.com
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Alexandru Barbulescu** - *Initial work* - [Alexandrubb23](https://github.com/alexandrubb23)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
 
