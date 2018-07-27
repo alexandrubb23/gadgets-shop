@@ -5,7 +5,6 @@ namespace LinkAcademy\Gadgets\Commons\Http;
 use ReflectionClass;
 use InvalidArgumentException;
 use LinkAcademy\Gadgets\Commons\Http\Route;
-use LinkAcademy\Gadgets\Commons\Http\AbstractController;
 use LinkAcademy\Gadgets\Commons\Contracts\ControllerInterface;
 
 class Controller implements ControllerInterface
