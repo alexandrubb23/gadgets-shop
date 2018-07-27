@@ -1,7 +1,7 @@
 
 # Gadgets Shopp
 
-A small osCommerce gadgets application according to the request. This app is fully OOP and is compliant PSR2.
+A small **osCommerce** gadgets application according to the request. This app is fully **OOP** and is **PSR2** compliant.
 
 ## Used Design Pattern
 
@@ -38,6 +38,8 @@ Open your "cli" and run to install application dependencies, as follow:
 ```
 composer install
 ```
+
+* [Twig Symfony](https://twig.symfony.com/) - will be installed.
 
 ### Running application
 

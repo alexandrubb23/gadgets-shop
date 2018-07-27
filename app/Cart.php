@@ -61,7 +61,7 @@ class Cart
     }
 
     /**
-     * Refresh basket
+     * Cart update
      *
      * @param  array  $items Items
      *
