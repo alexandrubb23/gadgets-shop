@@ -45,7 +45,7 @@ composer install
 In order to run application inside a container run the following command:
 
 ```
-docker buid -t gadgets
+docker build -t gadgets
 ```
 
 ```
