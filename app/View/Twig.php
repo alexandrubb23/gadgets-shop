@@ -8,7 +8,7 @@ use LinkAcademy\Gadgets\Commons\View\TwigExtension;
 
 class Twig
 {
-    const VIEWS_DIR = '/views/templates/electro/';
+    const TEAMPLATE_DIR = '/views/templates/electro/';
 
     /**
      * @var object
@@ -49,7 +49,7 @@ class Twig
     protected static function globalVars()
     {
         return [
-            'template_path' => app_url(self::VIEWS_DIR)
+            'template_path' => app_url(self::TEAMPLATE_DIR)
         ];
     }
 
@@ -60,6 +60,6 @@ class Twig
      */
     public static function getTemplateDir()
     {
-        return APP_DIR . self::VIEWS_DIR;
+        return APP_DIR . self::TEAMPLATE_DIR;
     }
 }
