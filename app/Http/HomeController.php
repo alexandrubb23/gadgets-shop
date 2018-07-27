@@ -2,6 +2,8 @@
 
 namespace LinkAcademy\Gadgets\Commons\Http;
 
+defined('APP_DIR') or die('No script kiddies please!');
+
 class HomeController
 {
     /**
