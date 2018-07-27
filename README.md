@@ -12,6 +12,8 @@ A small osCommerce gadgets application according to the request. This app is ful
 
 ## Software needed in order to run the app
 
+* [Nginx](https://www.nginx.com/)
+* [Apache](https://httpd.apache.org/)
 * [PHP](http://php.net/docs.php) - 7.0.x
 * [MySQL](https://www.mysql.com/)
 * [PHP Composer](https://getcomposer.org/)
