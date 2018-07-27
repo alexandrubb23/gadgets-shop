@@ -68,7 +68,7 @@ You can use Homestead from Laravel Framework
 
 ## Authors
 
-* **Alexandru Barbulescu** - *Initial work* - [Alexandrubb23](https://github.com/alexandrubb23)
+* **Alexandru Barbulescu** - [Alexandrubb23](https://github.com/alexandrubb23)
 
 
 
