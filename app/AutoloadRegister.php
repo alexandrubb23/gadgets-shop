@@ -56,7 +56,7 @@ class AutoloadRegister
             return;
         }
 
-        if (! (class_exists($class) || interface_exists($class, true) || trait_exists($class, true))) {
+        if (! (class_exists($class, true) || interface_exists($class, true) || trait_exists($class, true))) {
             throw new \Exception(sprintf(
                 'Class "%s" was expected to be in "%s" '
                 . 'The file was found but the class was not.',
