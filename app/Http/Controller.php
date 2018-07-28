@@ -48,7 +48,7 @@ class Controller implements ControllerInterface
 
         throw new InvalidArgumentException(sprintf(
             'The action controller "%s" has not been defined.',
-            $class
+            $controller
         ));
     }
 

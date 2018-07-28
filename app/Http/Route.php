@@ -32,6 +32,7 @@ class Route extends Controller
     {
         return preg_replace("/(.*)\\@.*$/", "$1", $this->action);
     }
+    
     /**
      * Get action
      *

@@ -38,7 +38,7 @@ class AutoloadRegister
         $classPath = sprintf(
             '%s/app%s.php',
             APP_DIR,
-            str_replace('\\', '/', $chunks[1])
+            str_replace('\\', DIRECTORY_SEPARATOR, $chunks[1])
         );
 
         # file not found, ignore
