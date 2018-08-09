@@ -5,8 +5,6 @@ use LinkAcademy\Gadgets\Commons\AutoloadRegister;
 session_start();
 
 require 'vendor/autoload.php';
-require 'utils/helpers.php';
-include 'app/AutoloadRegister.php';
 
 /*
 |--------------------------------------------------------------------------
