@@ -1,5 +1,5 @@
 
-# Gadgets Shopp
+# Gadgets Shop
 
 A small **osCommerce** gadgets application according to the request. This app is fully **OOP** and is **PSR2** compliant.
 
@@ -28,7 +28,7 @@ git init <project directory>
 Cloning repository
 
 ```
-git clone https://github.com/alexandrubb23/gadgets-shopp.git
+git clone https://github.com/alexandrubb23/gadgets-shop.git
 ```
 
 ### Prerequisites
