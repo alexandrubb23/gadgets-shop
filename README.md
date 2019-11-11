@@ -54,7 +54,7 @@ docker build -t gadgets
 ```
 docker run -p 3000:3000 gadgets
 ```
-You have to create your Dockerfile in order to run undder a container. I had no time for it!!
+You have to create your Dockerfile in order to run under a container. I had no time for it!!
 
 * **Access application in your browser** - http://localhost:3000
 
