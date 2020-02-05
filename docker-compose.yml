@@ -1,5 +1,8 @@
 version: "3.3"
 
+volumes:
+  vendor:
+
 services:
   web:
     #  can be specified either as a string containing a path to the build context:
@@ -13,15 +16,20 @@ services:
       - "sql:database"
     volumes:
       - "./src:/var/www/html"
+      - "vendor:/var/www/html/vendor"
   sql:
-    image: mariadb:latest
+    image: mariadb:${MYSQL_VERSION}
+    container_name: mysql_gadgets
     restart: always
+    env_file:
+      - .env
     ports:
-      - "3306"
+      - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: gadget
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_ROOT_USER=${MYSQL_ROOT_USER}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - "/var/lib/mysql"
