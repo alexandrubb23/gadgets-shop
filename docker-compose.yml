@@ -1,0 +1,27 @@
+version: "3.3"
+
+services:
+  web:
+    #  can be specified either as a string containing a path to the build context:
+    build: .
+    ports:
+      - "8000:80"
+    # @see https://docs.docker.com/compose/compose-file/ depends_on
+    depends_on:
+      - sql
+    links:
+      - "sql:database"
+    volumes:
+      - "./src:/var/www/html"
+  sql:
+    image: mariadb:latest
+    restart: always
+    ports:
+      - "3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: gadget
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    volumes:
+      - "/var/lib/mysql"
