@@ -14,37 +14,17 @@ class Route extends Controller
     const DEFAULT_ROUTE = 'home';
 
     /**
-     * Class constructor.
+     * Dummy HTTP GET request.
      *
      * @param string $uri   
      * @param string $action
      */
-    public function get(string $uri, string $action)
+    public function get(string $uri, string $action): void
     {
         $this->uri = $uri;
         $this->action = $action;
 
         $this->routes();
-    }
-
-    /**
-     * Get controller.
-     *
-     * @return string
-     */
-    public function getController(): string
-    {
-        return preg_replace("/(.*)\\@.*$/", "$1", $this->action);
-    }
-    
-    /**
-     * Get action.
-     *
-     * @return string
-     */
-    public function getAction(): string
-    {
-        return preg_replace("/.*\\@(.*)$/", "$1", $this->action);
     }
     
     /**
@@ -103,19 +83,19 @@ class Route extends Controller
         if (! $this->getRequest()) {
             return;
         }
+        
+        $uri = $this->getUri();
 
-        preg_match("/^{.*?}$/", $this->getParams($this->getUri()), $matches);
+        preg_match("/^{.*?}$/", $this->getParams($uri), $matches);
         if (empty($matches)) {
             return;
         }
 
-        return str_replace($matches[0], basename(
-            $this->getRequest()
-        ), $this->getUri());
+        return str_replace($matches[0], basename($this->getRequest()), $uri);
     }
 
     /**
-     * Controller exist.
+     * Is Controller.
      *
      * @return boolean
      */
@@ -152,11 +132,11 @@ class Route extends Controller
         
         $this
             ->setController($this->getFullClassController())
-            ->setAction($this->getAction())
+            ->setMethod($this->method())
             ->setParams($this->getParams())
         ;
         
-        $this->run();
+        $this->call();
     }
 
     /**
@@ -166,6 +146,6 @@ class Route extends Controller
      */
     private function getFullClassController(): string
     {
-        return __NAMESPACE__ . '\\Controllers\\' . $this->getController();
+        return __NAMESPACE__ . '\\Controllers\\' . $this->controller();
     }
 }

@@ -37,6 +37,22 @@ class Controller implements ControllerInterface
     protected $params;
 
     /**
+     * [__call description]
+     * @param  [type] $method [description]
+     * @param  [type] $args   [description]
+     * @return [type]         [description]
+     */
+    public function __call($method, $args)
+    {
+        preg_match('/(?<controller>\w+)@(?<method>\w+)/', $this->action, $matches);
+        if (empty($matches)) {
+            return;
+        }
+        
+        return $matches[$method];
+    }
+
+    /**
      * @inheritdoc
      */
     public function setController(string $controller)
@@ -45,7 +61,7 @@ class Controller implements ControllerInterface
             $this->controller = $controller;
             return $this;
         }
-
+        
         throw new InvalidArgumentException(sprintf(
             'The action controller "%s" has not been defined.',
             $controller
@@ -55,17 +71,17 @@ class Controller implements ControllerInterface
     /**
      * @inheritdoc
      */
-    public function setAction(string $action)
+    public function setMethod(string $method)
     {
         $reflection = new ReflectionClass($this->controller);
-        if ($reflection->hasMethod($action)) {
-            $this->method = $action;
+        if ($reflection->hasMethod($method)) {
+            $this->method = $method;
             return $this;
         }
 
         throw new InvalidArgumentException(sprintf(
-            'The controller action "%s" has been not defined.',
-            $action
+            'The controller method "%s" has been not defined.',
+            $method
         ));
     }
 
@@ -81,7 +97,7 @@ class Controller implements ControllerInterface
     /**
      * @inheritdoc
      */
-    public function run(): void
+    public function call(): void
     {
         call_user_func_array([
             new $this->controller, $this->method

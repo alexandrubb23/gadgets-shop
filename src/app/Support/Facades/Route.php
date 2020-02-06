@@ -2,6 +2,8 @@
 
 namespace LinkAcademy\Gadgets\Commons\Support\Facades;
 
+defined('APP_DIR') or die('No script kiddies please!');
+
 use LinkAcademy\Gadgets\Commons\Http\Route as RouteController;
 
 class Route extends Facade

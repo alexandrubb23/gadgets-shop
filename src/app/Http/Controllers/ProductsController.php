@@ -26,8 +26,6 @@ class ProductsController
      */
     public function getProduct(int $id): void
     {
-        // var_dump(Cart::add(1));
-        // var_dump(Cart::items());
         view('product.html', ['product_id' => $id]);
     }
 }

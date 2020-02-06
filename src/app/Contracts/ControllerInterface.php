@@ -19,7 +19,7 @@ interface ControllerInterface
      * @param string $action Action name
      * @throws InvalidArgumentException
      */
-    public function setAction(string $action);
+    public function setMethod(string $action);
 
     /**
      * Set params
@@ -29,9 +29,9 @@ interface ControllerInterface
     public function setParams(string $params);
 
     /**
-     * Run a controller
+     * Call a controller
      *
      * @return void
      */
-    public function run(): void;
+    public function call(): void;
 }

@@ -2,6 +2,8 @@
 
 namespace LinkAcademy\Gadgets\Commons;
 
+defined('APP_DIR') or die('No script kiddies please!');
+
 class Cart
 {
     /**
@@ -12,11 +14,11 @@ class Cart
     const CART = 'cart';
 
     /**
-     * Add item to the shopping basket
+     * Add a new item.
      *
      * @param int $item
      */
-    public function add(int $item): bool
+    public function addItem(int $item): bool
     {
         if (! in_array($item, $this->items())) {
             $_SESSION[self::CART][] = $item;
@@ -26,13 +28,13 @@ class Cart
     }
 
     /**
-     * Remove an item from shopping basket
+     * Remove an item.
      *
-     * @param  int    $item Item to be removed
+     * @param int $item
      *
      * @return void
      */
-    public function remove(int $item): void
+    public function removeItem(int $item): void
     {
         $items = $this->getAll();
         if (false !== $key = array_search($item, $items)) {
@@ -43,32 +45,29 @@ class Cart
     }
 
     /**
-     * Get all items
+     * Get all items.
      *
      * @return array
      */
     public function items(): array
     {
-        $items = $_SESSION[self::CART] ?? [];
-        sort($items, SORT_REGULAR);
-
-        return $items;
+        return $_SESSION[self::CART] ?? [];
     }
 
     /**
-     * Remove all items from the cart.
+     * Remove all.
      * 
-     * @return [type] [description]
+     * @return void
      */
-    public function removeAll(): void
+    public function remove(): void
     {
         unset($_SESSION[self::CART]);
     }
 
     /**
-     * Cart update
+     * Cart update.
      *
-     * @param  array  $items
+     * @param array  $items
      *
      * @return void
      */

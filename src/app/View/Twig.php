@@ -2,6 +2,8 @@
 
 namespace LinkAcademy\Gadgets\Commons\View;
 
+defined('APP_DIR') or die('No script kiddies please!');
+
 use Twig_Environment;
 use Twig_Loader_Filesystem;
 use LinkAcademy\Gadgets\Commons\View\TwigExtension;
@@ -11,7 +13,7 @@ class Twig
     /**
      * Template path.
      *
-     * @todo Can be selected dynamically
+     * @todo Can be selected from db or config file...
      */
     const TEMPLATE_DIR = '/views/templates/electro';
 

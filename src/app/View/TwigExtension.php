@@ -2,6 +2,8 @@
 
 namespace LinkAcademy\Gadgets\Commons\View;
 
+defined('APP_DIR') or die('No script kiddies please!');
+
 class TwigExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
 {
     /**
@@ -22,7 +24,7 @@ class TwigExtension extends \Twig_Extension implements \Twig_Extension_GlobalsIn
     }
 
     /**
-     * Get global vars
+     * Get global vars.
      *
      * @return array
      */

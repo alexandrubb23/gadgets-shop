@@ -14,9 +14,7 @@ class AutoloadRegister
      */
     public static function init(): void
     {
-        spl_autoload_register([
-            new static(), 'load'
-        ], true);
+        spl_autoload_register([new static(), 'load'], true);
     }
 
     /**
