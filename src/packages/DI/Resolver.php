@@ -14,7 +14,7 @@ trait Resolver
 	 * @param  string $class
 	 * @return object  
 	 */
-	public static function resolve(string $class)
+	public static function resolve(string $class): object
 	{
 		$reflector = new ReflectionClass($class);
 		if (! $reflector->isInstantiable()) {
