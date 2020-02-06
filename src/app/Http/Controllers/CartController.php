@@ -4,17 +4,33 @@ namespace LinkAcademy\Gadgets\Commons\Http\Controllers;
 
 defined('APP_DIR') or die('No script kiddies please!');
 
+use LinkAcademy\Gadgets\Commons\Services\Products;
 use LinkAcademy\Gadgets\Commons\Support\Facades\Cart;
+
+use Acme\Test;
 
 class CartController
 {
+	/**
+	 * Class constructor.
+	 * 
+	 * @param Products $products
+	 */
+	public function __construct(Products $products)
+	{
+		$this->products = $products;
+	}
+
     /**
-     * get home page
+     * Cart.
      *
      * @return void
      */
     public function index(): void
     {
-        view('checkout.html');
+        $products = $this->products->getAll();
+        $products = array_intersect_key($products, array_flip(Cart::items()));
+
+        view('checkout.html', ['products' => $products]);
     }
 }

@@ -13,7 +13,7 @@ class Twig
     /**
      * Template path.
      *
-     * @todo Can be selected from db or config file...
+     * @todo This be selected from db or config (phpdontenv, etc) file...
      */
     const TEMPLATE_DIR = '/views/templates/electro';
 

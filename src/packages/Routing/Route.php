@@ -1,11 +1,26 @@
 <?php declare(strict_types=1);
 
-namespace LinkAcademy\Gadgets\Commons\Http;
+namespace AlxCart\Routing;
 
-defined('APP_DIR') or die('No script kiddies please!');
+use LinkAcademy\Gadgets\Commons\Http\Controllers\Controller;
 
-class Route extends Controller
+class Route
 {
+    /**
+     * @var string
+     */
+    private $uri;
+
+    /**
+     * Class constructor.
+     * 
+     * @param Controller $controller
+     */
+    public function __construct(Controller $controller)
+    {
+        $this->controller = $controller;
+    }
+
     /**
      * Default controller.
      *
@@ -22,9 +37,9 @@ class Route extends Controller
     public function get(string $uri, string $action): void
     {
         $this->uri = $uri;
-        $this->action = $action;
+        $this->controller->setAction($action);
 
-        $this->routes();
+        $this->controller();
     }
     
     /**
@@ -53,7 +68,7 @@ class Route extends Controller
      *
      * @return string
      */
-    protected function getUri(): string
+    public function getUri(): string
     {
         return $this->uri;
     }
@@ -65,7 +80,6 @@ class Route extends Controller
      */
     protected function matchRoute(): string
     {
-        # there is no route, go home
         if (! $this->isRealRoute()) {
             return $this->getUri();
         }
@@ -124,19 +138,17 @@ class Route extends Controller
      *
      * @return null|void
      */
-    public function routes()
+    public function controller()
     {
         if (! $this->isController()) {
             return;
         }
         
-        $this
-            ->setController($this->getFullClassController())
-            ->setMethod($this->method())
-            ->setParams($this->getParams())
+        $this->controller
+            ->invokeMethod()
+            ->withParams($this->getParams())
+            ->call();
         ;
-        
-        $this->call();
     }
 
     /**
@@ -144,8 +156,8 @@ class Route extends Controller
      *
      * @return string
      */
-    private function getFullClassController(): string
+    private function getController(): string
     {
-        return __NAMESPACE__ . '\\Controllers\\' . $this->controller();
+        return __NAMESPACE__ . '\\Controllers\\' . $this->controller->className();
     }
 }

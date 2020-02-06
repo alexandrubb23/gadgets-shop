@@ -1,6 +1,6 @@
 <?php
 
-use LinkAcademy\Gadgets\Commons\Support\Facades\Route;
+use AlxCart\Support\Route;
 
 require 'app.php';
 

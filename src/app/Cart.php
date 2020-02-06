@@ -4,6 +4,8 @@ namespace LinkAcademy\Gadgets\Commons;
 
 defined('APP_DIR') or die('No script kiddies please!');
 
+use AlxCart\Support\Arr;
+
 class Cart
 {
     /**
@@ -20,11 +22,33 @@ class Cart
      */
     public function addItem(int $item): bool
     {
-        if (! in_array($item, $this->items())) {
+        // item should be positive
+        if ($item < 1) {
+            return false;
+        }
+
+        $items = $this->items();
+        if (! in_array($item, $items)) {
             $_SESSION[self::CART][] = $item;
         }
 
-        return in_array($item, $_SESSION[self::CART]);
+        return in_array($item, $items);
+    }
+
+    /**
+     * Add a collection of items.
+     *
+     * This method illustrate uses of 
+     * variadics operator, that's all.
+     * 
+     * @param void
+     */
+    public function addItems(...$items): void
+    {
+        $items = Arr::flatten($items);
+        foreach ($items as $item) {
+            $this->addItem($item);
+        }
     }
 
     /**
@@ -36,7 +60,7 @@ class Cart
      */
     public function removeItem(int $item): void
     {
-        $items = $this->getAll();
+        $items = $this->items();
         if (false !== $key = array_search($item, $items)) {
             unset($items[$key]);
         }
@@ -59,7 +83,7 @@ class Cart
      * 
      * @return void
      */
-    public function remove(): void
+    public function empty(): void
     {
         unset($_SESSION[self::CART]);
     }

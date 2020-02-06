@@ -7,7 +7,7 @@ defined('APP_DIR') or die('No script kiddies please!');
 class HomeController
 {
     /**
-     * get home page
+     * Home.
      *
      * @return void
      */

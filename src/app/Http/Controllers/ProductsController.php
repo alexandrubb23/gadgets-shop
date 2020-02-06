@@ -9,7 +9,7 @@ use LinkAcademy\Gadgets\Commons\Support\Facades\Cart;
 class ProductsController
 {
     /**
-     * Products
+     * All products.
      *
      * @return string
      */
@@ -19,13 +19,17 @@ class ProductsController
     }
 
     /**
-     * Prodcut detail
+     * Prodcut detail.
      *
      * @param  int    $id Product id
      * @return string
      */
     public function getProduct(int $id): void
     {
+        Cart::addItem(1);
+        Cart::addItem(2);
+        //Cart::addItems([1, 2, 3, 4, 0, -1]);
+
         view('product.html', ['product_id' => $id]);
     }
 }

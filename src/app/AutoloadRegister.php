@@ -7,9 +7,6 @@ class AutoloadRegister
     /**
      * Load classes
      *
-     * @see spl_autoload_register
-     * @link http://php.net/manual/en/function.spl-autoload-register.php
-     *
      * @return void
      */
     public static function init(): void
@@ -18,7 +15,7 @@ class AutoloadRegister
     }
 
     /**
-     * Loader class
+     * Loader class.
      *
      * @param string $class Class name
      *

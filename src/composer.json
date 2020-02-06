@@ -3,6 +3,9 @@
         "twig/twig": "^2.0"
     },
     "autoload": {
+    	"psr-4": {
+    		"AlxCart\\": "packages/"
+    	},
     	"files": [
     		"utils/helpers.php",
     		"app/AutoloadRegister.php"

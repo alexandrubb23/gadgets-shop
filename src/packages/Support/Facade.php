@@ -1,13 +1,14 @@
 <?php
 
-namespace LinkAcademy\Gadgets\Commons\Support\Facades;
-
-defined('APP_DIR') or die('No script kiddies please!');
+namespace AlxCart\Support;
 
 use RuntimeException;
+use AlxCart\DI\Resolver;
 
 abstract class Facade
 {
+    use Resolver;
+
     /**
      * The resolved object instances.
      *
@@ -50,7 +51,7 @@ abstract class Facade
             return static::$resolvedInstance[$name];
         }
         
-        return static::$resolvedInstance[$name] = new $name;
+        return static::$resolvedInstance[$name] = static::resolve($name);
     }
 
     /**

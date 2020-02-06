@@ -1,10 +1,10 @@
 <?php
 
-namespace LinkAcademy\Gadgets\Commons\Support\Facades;
+namespace AlxCart\Support;
 
 defined('APP_DIR') or die('No script kiddies please!');
 
-use LinkAcademy\Gadgets\Commons\Http\Route as RouteController;
+use AlxCart\Routing\Route as Controller;
 
 class Route extends Facade
 {
@@ -15,6 +15,6 @@ class Route extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return RouteController::class;
+        return Controller::class;
     }
 }
