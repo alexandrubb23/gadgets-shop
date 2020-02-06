@@ -1,6 +1,6 @@
 <?php
 
-namespace LinkAcademy\Gadgets\Commons\Exceptions;
+namespace App\Exceptions;
 
 class FileNotFoundException extends \Exception
 {

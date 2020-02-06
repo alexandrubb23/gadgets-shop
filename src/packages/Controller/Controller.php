@@ -4,6 +4,7 @@ namespace AlxCart\Controller;
 
 use ReflectionClass;
 use InvalidArgumentException;
+use App\Exceptions\FileNotFoundException;
 
 class Controller
 {
@@ -55,26 +56,37 @@ class Controller
      */
     public function __call($method, $args)
     {
-        if (! in_array($method, ['className', 'method'])) {
-            throw new \Exception("[$method] is not allowed.");
-        }
-
         preg_match('/(?<className>\w+)@(?<method>\w+)/', $this->action, $matches);
         if (empty($matches)) {
             return;
         }
         
-        return $matches[$method];
+        $method = $matches[$method] ?? null;
+        if (! $method) {
+            throw new \Exception("[$method] is not allowed.", 1); 
+        }
+
+        return $method;
     }
 
     /**
-     * @inheritdoc
+     * Invok a method.
+     *
+     * @return this
      */
     public function invokeMethod(): self
     {
         $method = $this->method();
+        $controller = $this->caller();
+
+        if (! class_exists($controller)) {
+            throw new FileNotFoundException(sprintf(
+                'Controller %s could not be found.',
+                $controller
+            ));
+        }
         
-        $reflection = new ReflectionClass($this->caller());
+        $reflection = new ReflectionClass($controller);
         if ($reflection->hasMethod($method)) {
             $this->method = $method;
             return $this;
@@ -87,7 +99,10 @@ class Controller
     }
 
     /**
-     * @inheritdoc
+     * Invoke method params.
+     *
+     * @param string $params
+     * @return this
      */
     public function withParams(string $params): self
     {
@@ -96,7 +111,9 @@ class Controller
     }
 
     /**
-     * @inheritdoc
+     * Call controller.
+     *
+     * @return vloid
      */
     public function call(): void
     {

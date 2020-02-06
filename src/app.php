@@ -1,7 +1,5 @@
 <?php
 
-use LinkAcademy\Gadgets\Commons\AutoloadRegister;
-
 session_start();
 
 require 'vendor/autoload.php';
@@ -26,13 +24,3 @@ define('APP_DIR', __DIR__);
 */
 
 define('GD_DEBUG', true);
-
-/*
-|--------------------------------------------------------------------------
-| Application Init
-|--------------------------------------------------------------------------
-|
-| It's load your application
-*/
-
-AutoloadRegister::init();

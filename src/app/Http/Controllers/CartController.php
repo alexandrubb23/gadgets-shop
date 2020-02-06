@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace LinkAcademy\Gadgets\Commons\Http\Controllers;
+namespace App\Http\Controllers;
 
 defined('APP_DIR') or die('No script kiddies please!');
 
-use LinkAcademy\Gadgets\Commons\Services\Products;
-use LinkAcademy\Gadgets\Commons\Support\Facades\Cart;
+use App\Services\Products;
+use App\Support\Facades\Cart;
 
 use Acme\Test;
 

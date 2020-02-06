@@ -1,11 +1,11 @@
 <?php
 
-namespace LinkAcademy\Gadgets\Commons\Support\Facades;
+namespace App\Support\Facades;
 
 defined('APP_DIR') or die('No script kiddies please!');
 
 use AlxCart\Support\Facade;
-use LinkAcademy\Gadgets\Commons\Cart as Basket;
+use App\Cart as Basket;
 
 class Cart extends Facade
 {

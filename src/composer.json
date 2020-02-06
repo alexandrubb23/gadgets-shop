@@ -4,11 +4,11 @@
     },
     "autoload": {
     	"psr-4": {
+            "App\\": "app/",
     		"AlxCart\\": "packages/"
     	},
     	"files": [
-    		"utils/helpers.php",
-    		"app/AutoloadRegister.php"
+    		"utils/helpers.php"
     	]
     }
 }

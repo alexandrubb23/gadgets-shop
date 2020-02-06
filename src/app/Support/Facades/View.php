@@ -1,11 +1,11 @@
 <?php
 
-namespace LinkAcademy\Gadgets\Commons\Support\Facades;
+namespace App\Support\Facades;
 
 defined('APP_DIR') or die('No script kiddies please!');
 
 use AlxCart\Support\Facade;
-use LinkAcademy\Gadgets\Commons\View\Twig;
+use App\View\Twig;
 
 class View extends Facade
 {

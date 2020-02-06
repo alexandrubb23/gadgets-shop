@@ -1,6 +1,6 @@
 <?php
 
-namespace LinkAcademy\Gadgets\Commons\Services;
+namespace App\Services;
 
 class Products
 {

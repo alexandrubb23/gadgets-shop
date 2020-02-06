@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace LinkAcademy\Gadgets\Commons\View;
+namespace App\View;
 
 defined('APP_DIR') or die('No script kiddies please!');
 
 use Twig_Environment;
 use Twig_Loader_Filesystem;
-use LinkAcademy\Gadgets\Commons\View\TwigExtension;
+use App\View\TwigExtension;
 
 class Twig
 {

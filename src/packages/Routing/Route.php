@@ -2,10 +2,17 @@
 
 namespace AlxCart\Routing;
 
-use LinkAcademy\Gadgets\Commons\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 
 class Route
 {
+    /**
+     * Default controller.
+     *
+     * @var string
+     */
+    const DEFAULT_ROUTE = 'home';
+    
     /**
      * @var string
      */
@@ -20,13 +27,6 @@ class Route
     {
         $this->controller = $controller;
     }
-
-    /**
-     * Default controller.
-     *
-     * @var string
-     */
-    const DEFAULT_ROUTE = 'home';
 
     /**
      * Dummy HTTP GET request.
@@ -119,7 +119,7 @@ class Route
         if (! $request) {
             $request = self::DEFAULT_ROUTE;
         }
-
+        
         return $request === $this->matchRoute();
     }
 
@@ -149,15 +149,5 @@ class Route
             ->withParams($this->getParams())
             ->call();
         ;
-    }
-
-    /**
-     * Get full class controller including namespace.
-     *
-     * @return string
-     */
-    private function getController(): string
-    {
-        return __NAMESPACE__ . '\\Controllers\\' . $this->controller->className();
     }
 }

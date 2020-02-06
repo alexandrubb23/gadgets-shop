@@ -1,6 +1,6 @@
 <?php
 
-use LinkAcademy\Gadgets\Commons\Support\Facades\View;
+use App\Support\Facades\View;
 
 if (! function_exists('view')) {
     /**
@@ -8,7 +8,7 @@ if (! function_exists('view')) {
      *
      * @param  string  $view
      * @param  array   $data
-     * @return \LinkAcademy\Gadgets\Commons\Support\Facades\View
+     * @return \App\Support\Facades\View
      */
     function view($view, $data = [])
     {

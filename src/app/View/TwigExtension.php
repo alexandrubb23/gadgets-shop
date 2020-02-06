@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace LinkAcademy\Gadgets\Commons\View;
+namespace App\View;
 
 defined('APP_DIR') or die('No script kiddies please!');
 
